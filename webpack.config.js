@@ -47,6 +47,21 @@ module.exports = {
                 use: [
                     'file-loader'
                 ]
+            },
+            /**
+             * 加载数据
+             */
+            {
+                test: /\.(csv|tsv)$/,
+                use: [
+                    'csv-loader'
+                ]
+            },
+            {
+                test: /\.(xml)$/,
+                use: [
+                    'xml-loader'
+                ]
             }
         ]
     }
