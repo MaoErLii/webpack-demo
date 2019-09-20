@@ -26,6 +26,15 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            /**
+             * 后缀名为 .png .svg .jpg .gif 结尾的全部文件，都将提供给 file-loader 处理
+             */
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }
