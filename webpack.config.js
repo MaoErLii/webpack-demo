@@ -10,7 +10,11 @@ module.exports = {
      * 入口
      */
     entry: {
-        app: './src/index.js'
+        // app: './src/index.js'
+        /**
+         * tree shaking 相关
+         *  */ 
+        app: './src/treeShaking.js'
     },
     /**
      * 资源管理
@@ -55,4 +59,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
+    /**
+     * mode配置
+     */
+    mode: "production"
 }
