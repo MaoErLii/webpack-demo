@@ -24,6 +24,10 @@ module.exports = {
         })
     ],
     /**
+     * 控制是否生成，如何生成source-map
+     */
+    devtool: 'inline-source-map',
+    /**
      * 输出
      */
     output: {
