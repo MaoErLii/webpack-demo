@@ -1,5 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 旧版 CleanWebpackPlugin 引入写法 
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     /**
@@ -13,6 +16,9 @@ module.exports = {
      * 插件
      */
     plugins: [
+        // 最新 cleanWebpackPlugin 只接受对象作为参数，默认删除outpub.path目录文件
+        // new CleanWebpackPlugin(['dist']), 
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Output Management 输出管理'
         })
