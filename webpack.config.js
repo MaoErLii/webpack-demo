@@ -3,14 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 旧版 CleanWebpackPlugin 引入写法 
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
     /**
      * 入口
      */
     entry: {
-        app: './src/index.js',
-        print: './src/print.js'
+        app: './src/index.js'
     },
     /**
      * 插件
@@ -21,7 +21,9 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Output Management 输出管理'
-        })
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
     /**
      * 控制是否生成，如何生成source-map
@@ -31,7 +33,8 @@ module.exports = {
      * 本地 开发服务器配置
      */
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
+        hot: true
     },
     /**
      * 输出
