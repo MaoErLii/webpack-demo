@@ -1,5 +1,4 @@
-import _ from 'lodash'
-import './style.css'
+// import _ from 'lodash'
 import printMe from './print.js'
 
 function component () {
@@ -7,7 +6,10 @@ function component () {
     var btn = document.createElement('button');
 
     // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack', '你好', '外补派克'], ' ');
+    element.innerHTML = [
+        'Hello, webpack!',
+        'aqua 赛高!'
+    ].join('\n\n');
 
     btn.innerHTML = 'Click me and check the console';
     btn.onclick = printMe;
