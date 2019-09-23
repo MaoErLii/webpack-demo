@@ -13,6 +13,17 @@ module.exports = {
         app: './src/index.js'
     },
     /**
+     * 资源管理
+     */
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
+    /**
      * 插件
      */
     plugins: [
