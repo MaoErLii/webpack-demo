@@ -28,6 +28,12 @@ module.exports = {
      */
     devtool: 'inline-source-map',
     /**
+     * 本地 开发服务器配置
+     */
+    devServer: {
+        contentBase: './dist'
+    },
+    /**
      * 输出
      */
     output: {
