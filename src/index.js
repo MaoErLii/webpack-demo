@@ -20,6 +20,10 @@ function component () {
 
     element.appendChild(btn);
 
+    console.log(
+        _.join(['Anthor', 'module', 'loaded!'], '')
+    )
+
     return element;
 }
 

@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 旧版 CleanWebpackPlugin 引入写法 
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -56,4 +56,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 }
