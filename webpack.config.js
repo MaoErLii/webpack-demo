@@ -10,7 +10,8 @@ module.exports = {
      * 入口
      */
     entry: {
-        app: './src/index.js'
+        app: './src/index.js',
+        another: './src/another-module.js'
     },
     /**
      * 资源管理
@@ -31,7 +32,7 @@ module.exports = {
         // new CleanWebpackPlugin(['dist']), 
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Output Management 输出管理'
+            title: 'code spliting 代码分离'
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
