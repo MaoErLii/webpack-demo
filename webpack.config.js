@@ -30,9 +30,9 @@ module.exports = {
     plugins: [
         // 最新 cleanWebpackPlugin 只接受对象作为参数，默认删除outpub.path目录文件
         // new CleanWebpackPlugin(['dist']), 
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'code spliting 代码分离'
+            title: 'caching 缓存'
         }),
         // new webpack.NamedModulesPlugin(),
         // new webpack.HotModuleReplacementPlugin()
@@ -52,8 +52,8 @@ module.exports = {
      * 输出
      */
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].[chunkhash].js',
+        // chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         // publicPath: '/'
     }
