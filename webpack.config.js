@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 旧版 CleanWebpackPlugin 引入写法 
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack')
+// const webpack = require('webpack')
 
 module.exports = {
     mode: 'development',
@@ -33,7 +33,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'caching 缓存'
-        }),
+        })
         // new webpack.NamedModulesPlugin(),
         // new webpack.HotModuleReplacementPlugin()
     ],
@@ -56,10 +56,17 @@ module.exports = {
         // chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         // publicPath: '/'
+    },
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                }
+            }
+        }
     }
-    // optimization: {
-    //     splitChunks: {
-    //         chunks: 'all',
-    //     }
-    // }
 }
