@@ -35,10 +35,8 @@ function component() {
     element.appendChild(br);
     element.appendChild(btn);
 
-    btn.onclick = e => import('./print').then(module => {
-        var print = module.default;
-
-        print();
+    btn.onclick = (e => {
+        console.log('caching test')
     })
 
     return element;
