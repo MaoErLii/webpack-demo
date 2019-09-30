@@ -22,6 +22,7 @@
 // })
 
 import _ from  'lodash';
+// import Print from './print';
 
 function component() {
     var element = document.createElement('div');
@@ -35,9 +36,7 @@ function component() {
     element.appendChild(br);
     element.appendChild(btn);
 
-    btn.onclick = (e => {
-        console.log('caching test')
-    })
+    // btn.onclick = Print.bind(null, 'Hello webpack!');
 
     return element;
 }

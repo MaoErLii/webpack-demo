@@ -58,6 +58,7 @@ module.exports = {
         // publicPath: '/'
     },
     optimization: {
+        moduleIds: 'hashed',
         runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
