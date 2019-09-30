@@ -1,44 +1,14 @@
-// function getComponent() {
-// async function getComponent() {
-//     // console.log('component')
-//     // return import('lodash').then(({ default: _ }) => {
-//     //     const element =  document.createElement('div');
+import _ from 'lodash';
+import numRef from './ref.json';
 
-//     //     element.innerHTML = _.join(['Hello', 'Minato'], ' ');
-        
-//     //     return element;
-//     // }).catch(error => 'An error occurred while loading the component');
-    
-//     var element = document.createElement('div');
-//     const _ = await import('lodash');
+export function numToWord(num) {
+    return _.reduce(numRef, (accum, ref) => {
+        return ref.num === num? ref.word : accum;
+    }, '');
+};
 
-//     element.innerHTML = _.join(['hello', 'aqua'], ' ');
-
-//     return element;
-// }
-
-// getComponent().then(component => {
-//     document.body.appendChild(component);
-// })
-
-import _ from  'lodash';
-// import Print from './print';
-
-function component() {
-    var element = document.createElement('div');
-    
-    var btn = document.createElement('button');
-    var br = document.createElement('br');
-
-    btn.innerHTML = 'click me and check the console';
-
-    element.innerHTML = _.join(['hello', 'webpack'], '');
-    element.appendChild(br);
-    element.appendChild(btn);
-
-    // btn.onclick = Print.bind(null, 'Hello webpack!');
-
-    return element;
+export function wordToNum(word) {
+    return _.reduce(numRef, (accum, ref) => {
+        return ref.word === word && word.toLowerCase() ? ref.num : accum;
+    }, -1);
 }
-
-document.body.appendChild(component());
