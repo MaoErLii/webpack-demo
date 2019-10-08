@@ -13,6 +13,7 @@ module.exports = {
     entry: {
         index: './src/index.js'
     },
+    devtool: 'inline-source-map',
     /**
      * 资源管理
      */
@@ -21,6 +22,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_moudles/
             }
         ]
     },
@@ -37,6 +43,9 @@ module.exports = {
         // new webpack.NamedModulesPlugin(),
         // new webpack.HotModuleReplacementPlugin()
     ],
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    },
     /**
      * 控制是否生成，如何生成source-map
      */
@@ -52,22 +61,9 @@ module.exports = {
      * 输出
      */
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: 'bundle.js',
         // chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         // publicPath: '/'
-    },
-    optimization: {
-        moduleIds: 'hashed',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                }
-            }
-        }
     }
 }
