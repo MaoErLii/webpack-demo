@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const webpack = require('webpack')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -32,7 +33,13 @@ module.exports = {
         // new CleanWebpackPlugin(['dist']), 
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'caching 缓存'
+            title: 'Progressive Web Application 渐进式网络应用程序'
+        }),
+        new WorkboxPlugin.GenerateSW({
+            // 这些选项帮助 serviceWorkers 快速启用
+            // 不允许遗留任何“旧的” ServiceWorkers
+            clientsClaim: true,
+            skipWaiting: true
         })
         // new webpack.NamedModulesPlugin(),
         // new webpack.HotModuleReplacementPlugin()
@@ -56,18 +63,18 @@ module.exports = {
         // chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         // publicPath: '/'
-    },
-    optimization: {
-        moduleIds: 'hashed',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                }
-            }
-        }
     }
+    // optimization: {
+    //     moduleIds: 'hashed',
+    //     runtimeChunk: 'single',
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: 'vendors',
+    //                 chunks: 'all',
+    //             }
+    //         }
+    //     }
+    // }
 }
