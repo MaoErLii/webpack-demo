@@ -1,14 +1,19 @@
-import _ from 'lodash';
-import numRef from './ref.json';
+function component() {
+    var element = document.createElement('div');
 
-export function numToWord(num) {
-    return _.reduce(numRef, (accum, ref) => {
-        return ref.num === num? ref.word : accum;
-    }, '');
-};
+    element.innerHTML = join(['hello', 'aqua'], ' ');
 
-export function wordToNum(word) {
-    return _.reduce(numRef, (accum, ref) => {
-        return ref.word === word && word.toLowerCase() ? ref.num : accum;
-    }, -1);
+    this.alert('Hmm, this probably isn\'t a great idea...');
+
+    return element;
 }
+
+document.body.appendChild(component());
+
+fetch('https://jsonplaceholder.typicode.com/users').then(res => {
+    res.json();
+}).then(json => {
+    console.log(json);
+}).catch(err => {
+    console.log(err);
+})
